@@ -1,0 +1,47 @@
+{
+  "id": "breadcrumbs",
+  "type": "SharedSlice",
+  "name": "Breadcrumbs",
+  "description": "Breadcrumbs",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "sktwi1xtmkfgx8626",
+      "description": "Breadcrumbs",
+      "primary": {},
+      "items": {
+        "relations": {
+          "type": "Link",
+          "config": {
+            "label": "relations",
+            "select": "document",
+            "customtypes": [
+              "category",
+              "plage_guadeloupe",
+              "subcategory"
+            ]
+          }
+        },
+        "relation_link": {
+          "type": "Link",
+          "config": {
+            "label": "relation_link",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "select": null
+          }
+        },
+        "relation_name": {
+          "type": "Text",
+          "config": {
+            "label": "relation name",
+            "placeholder": ""
+          }
+        }
+      },
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+    }
+  ]
+}

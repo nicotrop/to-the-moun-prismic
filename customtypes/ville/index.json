@@ -1,0 +1,9 @@
+{
+  "id": "ville",
+  "label": "Ville",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {}
+  }
+}

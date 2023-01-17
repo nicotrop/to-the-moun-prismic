@@ -1,0 +1,56 @@
+{
+  "uid": {
+    "__TYPE__": "UIDContent",
+    "value": "leader"
+  },
+  "subcategory": {
+    "__TYPE__": "LinkContent",
+    "value": {
+      "__TYPE__": "DocumentLink",
+      "id": "mock_document_id"
+    }
+  },
+  "header": {
+    "__TYPE__": "StructuredTextContent",
+    "value": [
+      {
+        "type": "paragraph",
+        "content": {
+          "text": "Eiusmod do eiusmod nulla ullamco consectetur dolore commodo irure sunt irure aliquip."
+        }
+      }
+    ]
+  },
+  "slices": {
+    "__TYPE__": "SliceContentType",
+    "value": [
+      {
+        "key": "text$1088c840-b393-439a-ae5f-bcfdb398c97e",
+        "name": "text",
+        "widget": {
+          "__TYPE__": "SharedSliceContent",
+          "variation": "default",
+          "primary": {
+            "text": {
+              "__TYPE__": "StructuredTextContent",
+              "value": [
+                {
+                  "type": "paragraph",
+                  "content": {
+                    "text": "Sunt consectetur quis anim pariatur sint adipisicing exercitation occaecat reprehenderit magna ex nostrud. Deserunt aute irure proident aliquip irure qui dolor labore aute cillum dolor tempor deserunt."
+                  }
+                }
+              ]
+            }
+          },
+          "items": [
+            {
+              "__TYPE__": "GroupItemContent",
+              "value": []
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

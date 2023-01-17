@@ -1,0 +1,31 @@
+{
+  "uid": {
+    "__TYPE__": "UIDContent",
+    "value": "can"
+  },
+  "article": {
+    "__TYPE__": "LinkContent",
+    "value": {
+      "__TYPE__": "DocumentLink",
+      "id": "mock_document_id"
+    }
+  },
+  "category": {
+    "__TYPE__": "LinkContent",
+    "value": {
+      "__TYPE__": "DocumentLink",
+      "id": "mock_document_id"
+    }
+  },
+  "header": {
+    "__TYPE__": "StructuredTextContent",
+    "value": [
+      {
+        "type": "paragraph",
+        "content": {
+          "text": "Aliqua labore occaecat officia culpa labore laborum ex. Consectetur anim dolore sunt commodo ipsum labore ut in irure culpa enim qui. Ipsum commodo aliqua irure esse."
+        }
+      }
+    ]
+  }
+}
