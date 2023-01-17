@@ -66,7 +66,14 @@
         }
       }
     },
-    "plage_guadeloupe": {},
+    "plage_guadeloupe": {
+      "header": {
+        "config": {
+          "patternType": "PARAGRAPH",
+          "blocks": 1
+        }
+      }
+    },
     "que_faire_article": {
       "header": {
         "config": {
@@ -92,7 +99,8 @@
       }
     },
     "ville": {},
-    "collections": {}
+    "collections": {},
+    "auteur": {}
   },
   "slices": {
     "Text": {
@@ -164,6 +172,11 @@
       "default": {
         "primary": {},
         "items": {}
+      }
+    },
+    "ArticleMetaData": {
+      "default": {
+        "primary": {}
       }
     }
   }

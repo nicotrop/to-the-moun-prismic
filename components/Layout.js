@@ -1,6 +1,5 @@
 import { Header } from "./Header";
 import { Footer } from "./Footer";
-import { Bounded } from "./Bounded";
 
 export const Layout = ({
   navigation,
@@ -18,7 +17,7 @@ export const Layout = ({
         navigation={navigation}
         settings={settings}
       />
-      <Bounded>{children}</Bounded>
+      <div>{children}</div>
       <Footer withSignUpForm={withSignUpForm} settings={settings} />
     </div>
   );

@@ -1,1 +1,18 @@
-{}
+{
+  "uid": {
+    "__TYPE__": "UIDContent",
+    "value": "crop"
+  },
+  "ville": {
+    "__TYPE__": "FieldContent",
+    "value": "far",
+    "type": "Text"
+  },
+  "articles": {
+    "__TYPE__": "LinkContent",
+    "value": {
+      "__TYPE__": "DocumentLink",
+      "id": "mock_document_id"
+    }
+  }
+}

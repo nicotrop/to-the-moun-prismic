@@ -5,6 +5,7 @@ import * as prismicH from "@prismicio/helpers";
 import { createClient } from "../../../prismicio";
 import { components } from "../../../slices";
 import { Layout } from "../../../components/Layout";
+import { Bounded } from "../../../components/Bounded";
 
 const Plages = ({ page, navigation, settings }) => {
   return (
@@ -14,13 +15,15 @@ const Plages = ({ page, navigation, settings }) => {
       withProfile={false}
       withHeaderDivider={false}
     >
-      <Head>
+      {/* <Head>
         <title>
           {prismicH.asText(page.data.title)} |{" "}
           {prismicH.asText(settings.data.name)}
         </title>
-      </Head>
-      <SliceZone slices={page.data.slices} components={components} />
+      </Head> */}
+      <Bounded size="base">
+        <SliceZone slices={page.data.slices} components={components} />
+      </Bounded>
     </Layout>
   );
 };
@@ -30,32 +33,18 @@ export default Plages;
 export async function getStaticProps({ params, previewData }) {
   const client = createClient({ previewData });
 
-  const page = await client.getByUID(
-    "plage_guadeloupe",
-    params.uid,
-    {
-      fetchLinks: "subcategory",
-    },
-    {
-      fetchLinks: "category",
-    }
-  );
-  const category = await client.getByUID(
-    "subcategory",
-    page.data.subcategory.uid,
-    {
-      fetchLinks: "category",
-    }
-  );
+  const page = await client.getByUID("plage_guadeloupe", params.uid, {
+    fetchLinks: "auteur.nom, auteur.prenom, auteur.avatar",
+  });
   const navigation = await client.getSingle("navigation");
   const settings = await client.getSingle("settings");
 
-  // console.log(page.data.slices[2].primary);
+  // const auteur = await client.getByUID("auteur", page.data.auteur.uid);
 
   return {
     props: {
+      // auteur,
       page,
-      category,
       navigation,
       settings,
     },

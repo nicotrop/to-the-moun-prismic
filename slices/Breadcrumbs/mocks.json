@@ -36,6 +36,45 @@
             }
           ]
         ]
+      },
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "relation_name",
+            {
+              "__TYPE__": "FieldContent",
+              "type": "Text",
+              "value": "noibobuo"
+            }
+          ]
+        ]
+      },
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "relation_name",
+            {
+              "__TYPE__": "FieldContent",
+              "type": "Text",
+              "value": "bouboub"
+            }
+          ]
+        ]
+      },
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "relation_name",
+            {
+              "__TYPE__": "FieldContent",
+              "type": "Text",
+              "value": "ububuob"
+            }
+          ]
+        ]
       }
     ]
   }

@@ -68,6 +68,52 @@ type ArticleDocumentDataSlicesSlice = ImageSlice | QuoteSlice | TextSlice | Cont
  * @typeParam Lang - Language API ID of the document.
  */
 export type ArticleDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<ArticleDocumentData>, "article", Lang>;
+/** Content for Auteur documents */
+interface AuteurDocumentData {
+    /**
+     * Nom field in *Auteur*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: auteur.nom
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    nom: prismicT.KeyTextField;
+    /**
+     * Prenom field in *Auteur*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: auteur.prenom
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    prenom: prismicT.KeyTextField;
+    /**
+     * Avatar field in *Auteur*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: auteur.avatar
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    avatar: prismicT.ImageField<never>;
+}
+/**
+ * Auteur document from Prismic
+ *
+ * - **API ID**: `auteur`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type AuteurDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<AuteurDocumentData>, "auteur", Lang>;
 /** Content for Category documents */
 interface CategoryDocumentData {
     /**
@@ -289,7 +335,7 @@ interface PlageGuadeloupeDocumentData {
      * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
      *
      */
-    category: prismicT.RelationField;
+    category: prismicT.RelationField<"category">;
     /**
      * Ville field in *Plage*
      *
@@ -300,7 +346,7 @@ interface PlageGuadeloupeDocumentData {
      * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
      *
      */
-    ville: prismicT.RelationField;
+    ville: prismicT.RelationField<"ville">;
     /**
      * Auteur field in *Plage*
      *
@@ -311,7 +357,29 @@ interface PlageGuadeloupeDocumentData {
      * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
      *
      */
-    auteur: prismicT.RelationField;
+    auteur: prismicT.RelationField<"auteur">;
+    /**
+     * date_publication field in *Plage*
+     *
+     * - **Field Type**: Timestamp
+     * - **Placeholder**: *None*
+     * - **API ID Path**: plage_guadeloupe.date_publication
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/timestamp
+     *
+     */
+    date_publication: prismicT.TimestampField;
+    /**
+     * Geopoint field in *Plage*
+     *
+     * - **Field Type**: GeoPoint
+     * - **Placeholder**: *None*
+     * - **API ID Path**: plage_guadeloupe.geopoint
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/geopoint
+     *
+     */
+    geopoint: prismicT.GeoPointField;
     /**
      * Slice Zone field in *Plage*
      *
@@ -328,7 +396,7 @@ interface PlageGuadeloupeDocumentData {
  * Slice for *Plage → Slice Zone*
  *
  */
-type PlageGuadeloupeDocumentDataSlicesSlice = TextSlice | ImageSlice | HeaderSlice | BodySlice | BreadcrumbsSlice;
+type PlageGuadeloupeDocumentDataSlicesSlice = TextSlice | ImageSlice | HeaderSlice | BodySlice | BreadcrumbsSlice | ArticleMetaDataSlice;
 /**
  * Plage document from Prismic
  *
@@ -454,7 +522,30 @@ interface SubcategoryDocumentData {
  */
 export type SubcategoryDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<SubcategoryDocumentData>, "subcategory", Lang>;
 /** Content for Ville documents */
-type VilleDocumentData = Record<string, never>;
+interface VilleDocumentData {
+    /**
+     * Ville field in *Ville*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: ville.ville
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    ville: prismicT.KeyTextField;
+    /**
+     * Articles field in *Ville*
+     *
+     * - **Field Type**: Content Relationship
+     * - **Placeholder**: *None*
+     * - **API ID Path**: ville.articles
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    articles: prismicT.RelationField<"plage_guadeloupe">;
+}
 /**
  * Ville document from Prismic
  *
@@ -464,8 +555,57 @@ type VilleDocumentData = Record<string, never>;
  *
  * @typeParam Lang - Language API ID of the document.
  */
-export type VilleDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<VilleDocumentData>, "ville", Lang>;
-export type AllDocumentTypes = ArticleDocument | CategoryDocument | CollectionsDocument | NavigationDocument | PageDocument | PlageGuadeloupeDocument | SettingsDocument | SubcategoryDocument | VilleDocument;
+export type VilleDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<VilleDocumentData>, "ville", Lang>;
+export type AllDocumentTypes = ArticleDocument | AuteurDocument | CategoryDocument | CollectionsDocument | NavigationDocument | PageDocument | PlageGuadeloupeDocument | SettingsDocument | SubcategoryDocument | VilleDocument;
+/**
+ * Primary content in ArticleMetaData → Primary
+ *
+ */
+interface ArticleMetaDataSliceDefaultPrimary {
+    /**
+     * Auteur field in *ArticleMetaData → Primary*
+     *
+     * - **Field Type**: Content Relationship
+     * - **Placeholder**: *None*
+     * - **API ID Path**: article_meta_data.primary.auteur
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    auteur: prismicT.RelationField<"auteur">;
+    /**
+     * ArticleDetails field in *ArticleMetaData → Primary*
+     *
+     * - **Field Type**: Content Relationship
+     * - **Placeholder**: *None*
+     * - **API ID Path**: article_meta_data.primary.articledetails
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    articledetails: prismicT.RelationField<"plage_guadeloupe">;
+}
+/**
+ * Default variation for ArticleMetaData Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `ArticleMetaData`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ArticleMetaDataSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<ArticleMetaDataSliceDefaultPrimary>, never>;
+/**
+ * Slice variation for *ArticleMetaData*
+ *
+ */
+type ArticleMetaDataSliceVariation = ArticleMetaDataSliceDefault;
+/**
+ * ArticleMetaData Shared Slice
+ *
+ * - **API ID**: `article_meta_data`
+ * - **Description**: `ArticleMetaData`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ArticleMetaDataSlice = prismicT.SharedSlice<"article_meta_data", ArticleMetaDataSliceVariation>;
 /**
  * Item in Breadcrumbs → Items
  *
@@ -813,6 +953,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { ArticleDocumentData, ArticleDocumentDataSlicesSlice, ArticleDocument, CategoryDocumentData, CategoryDocumentDataSlicesSlice, CategoryDocument, CollectionsDocumentData, CollectionsDocument, NavigationDocumentData, NavigationDocumentDataLinksItem, NavigationDocument, PageDocumentData, PageDocumentDataSlicesSlice, PageDocument, PlageGuadeloupeDocumentData, PlageGuadeloupeDocumentDataSlicesSlice, PlageGuadeloupeDocument, SettingsDocumentData, SettingsDocument, SubcategoryDocumentData, SubcategoryDocument, VilleDocumentData, VilleDocument, AllDocumentTypes, BreadcrumbsSliceDefaultItem, BreadcrumbsSliceDefault, BreadcrumbsSliceVariation, BreadcrumbsSlice, ContactFormSliceDefault, ContactFormSliceVariation, ContactFormSlice, HeaderSliceDefaultPrimary, HeaderSliceDefault, HeaderSliceVariation, HeaderSlice, ImageSliceDefaultPrimary, ImageSliceDefault, ImageSliceWidePrimary, ImageSliceWide, ImageSliceVariation, ImageSlice, QuoteSliceDefaultPrimary, QuoteSliceDefault, QuoteSliceVariation, QuoteSlice, BodySliceDefaultPrimary, BodySliceDefault, BodySliceVariation, BodySlice, TextSliceDefaultPrimary, TextSliceDefault, TextSliceVariation, TextSlice };
+        export type { ArticleDocumentData, ArticleDocumentDataSlicesSlice, ArticleDocument, AuteurDocumentData, AuteurDocument, CategoryDocumentData, CategoryDocumentDataSlicesSlice, CategoryDocument, CollectionsDocumentData, CollectionsDocument, NavigationDocumentData, NavigationDocumentDataLinksItem, NavigationDocument, PageDocumentData, PageDocumentDataSlicesSlice, PageDocument, PlageGuadeloupeDocumentData, PlageGuadeloupeDocumentDataSlicesSlice, PlageGuadeloupeDocument, SettingsDocumentData, SettingsDocument, SubcategoryDocumentData, SubcategoryDocument, VilleDocumentData, VilleDocument, AllDocumentTypes, ArticleMetaDataSliceDefaultPrimary, ArticleMetaDataSliceDefault, ArticleMetaDataSliceVariation, ArticleMetaDataSlice, BreadcrumbsSliceDefaultItem, BreadcrumbsSliceDefault, BreadcrumbsSliceVariation, BreadcrumbsSlice, ContactFormSliceDefault, ContactFormSliceVariation, ContactFormSlice, HeaderSliceDefaultPrimary, HeaderSliceDefault, HeaderSliceVariation, HeaderSlice, ImageSliceDefaultPrimary, ImageSliceDefault, ImageSliceWidePrimary, ImageSliceWide, ImageSliceVariation, ImageSlice, QuoteSliceDefaultPrimary, QuoteSliceDefault, QuoteSliceVariation, QuoteSlice, BodySliceDefaultPrimary, BodySliceDefault, BodySliceVariation, BodySlice, TextSliceDefaultPrimary, TextSliceDefault, TextSliceVariation, TextSlice };
     }
 }

@@ -63,7 +63,7 @@ const SignUpForm = ({ settings }) => {
 
 export const Footer = ({ withSignUpForm = true, settings }) => {
   return (
-    <Bounded as="footer">
+    <Bounded as="footer" size="full">
       <div className="grid grid-cols-1 justify-items-center gap-24">
         <HorizontalDivider />
         {withSignUpForm && <SignUpForm settings={settings} />}

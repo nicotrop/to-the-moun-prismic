@@ -19,8 +19,6 @@ import Link from "next/link";
 // ];
 
 const Breadcrumbs = ({ slice }) => {
-  console.log("slice", slice);
-
   return (
     <nav className="flex" aria-label="Breadcrumb">
       <ol role="list" className="flex items-center space-x-4">

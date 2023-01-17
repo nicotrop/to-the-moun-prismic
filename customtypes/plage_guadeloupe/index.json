@@ -35,21 +35,43 @@
         "type": "Link",
         "config": {
           "label": "Category",
-          "select": "document"
+          "select": "document",
+          "customtypes": [
+            "category"
+          ]
         }
       },
       "ville": {
         "type": "Link",
         "config": {
           "label": "Ville",
-          "select": "document"
+          "select": "document",
+          "customtypes": [
+            "ville"
+          ]
         }
       },
       "auteur": {
         "type": "Link",
         "config": {
           "label": "Auteur",
-          "select": "document"
+          "select": "document",
+          "customtypes": [
+            "auteur"
+          ]
+        }
+      },
+      "date_publication": {
+        "type": "Timestamp",
+        "config": {
+          "label": "date_publication",
+          "placeholder": ""
+        }
+      },
+      "geopoint": {
+        "type": "GeoPoint",
+        "config": {
+          "label": "Geopoint"
         }
       },
       "slices": {
@@ -70,6 +92,9 @@
               "type": "SharedSlice"
             },
             "breadcrumbs": {
+              "type": "SharedSlice"
+            },
+            "article_meta_data": {
               "type": "SharedSlice"
             }
           }

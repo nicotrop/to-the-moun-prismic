@@ -13,15 +13,6 @@ const Body = ({ slice }) => (
     ) : (
       <p>start by editing this slice from inside Slice Machine!</p>
     )}
-    <style jsx>{`
-      section {
-        max-width: 600px;
-        margin: 4em auto;
-      }
-      .title {
-        color: #8592e0;
-      }
-    `}</style>
   </section>
 );
 

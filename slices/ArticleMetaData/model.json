@@ -1,0 +1,39 @@
+{
+  "id": "article_meta_data",
+  "type": "SharedSlice",
+  "name": "ArticleMetaData",
+  "description": "ArticleMetaData",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "sktwi1xtmkfgx8626",
+      "description": "ArticleMetaData",
+      "primary": {
+        "auteur": {
+          "type": "Link",
+          "config": {
+            "label": "Auteur",
+            "select": "document",
+            "customtypes": [
+              "auteur"
+            ]
+          }
+        },
+        "articledetails": {
+          "type": "Link",
+          "config": {
+            "label": "ArticleDetails",
+            "select": "document",
+            "customtypes": [
+              "plage_guadeloupe"
+            ]
+          }
+        }
+      },
+      "items": {},
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+    }
+  ]
+}

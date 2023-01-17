@@ -9,7 +9,7 @@ import { HorizontalDivider } from "./HorizontalDivider";
 const Profile = ({ name, description, profilePicture }) => {
   return (
     <div className="px-4">
-      <div className="grid max-w-lg grid-cols-1 justify-items-center gap-8">
+      <div className="grid max-w-xl grid-cols-1 justify-items-center gap-8">
         <PrismicLink href="/" tabIndex="-1">
           <div className="relative h-40 w-40 overflow-hidden rounded-full bg-slate-300">
             {prismicH.isFilled.image(profilePicture) && (
@@ -56,7 +56,7 @@ export const Header = ({
   settings,
 }) => {
   return (
-    <Bounded as="header">
+    <Bounded as="header" size="full">
       <div className="grid grid-cols-1 justify-items-center gap-20">
         <nav>
           <ul className="flex flex-wrap justify-center gap-10">
