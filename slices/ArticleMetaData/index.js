@@ -1,4 +1,4 @@
-import { usePrismicDocumentByUID } from "@prismicio/react";
+import { PrismicNextImage } from "@prismicio/next";
 import React from "react";
 
 /**
@@ -7,9 +7,21 @@ import React from "react";
  * @param { ArticleMetaDataProps }
  */
 const ArticleMetaData = ({ slice }) => {
-  console.log("article meta data", slice);
+  const { data: auteur } = slice.primary.auteur;
 
-  return <section>Hello</section>;
+  return (
+    <section>
+      <div className="flex items-center gap-x-2 ">
+        <PrismicNextImage
+          field={auteur.avatar}
+          className="aspect-1 w-10 overflow-hidden rounded-full border border-solid border-black"
+        />
+        <span>
+          {auteur.prenom} {auteur.nom}
+        </span>
+      </div>
+    </section>
+  );
 };
 
 export default ArticleMetaData;

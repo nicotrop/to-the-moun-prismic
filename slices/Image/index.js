@@ -7,7 +7,7 @@ const Image = ({ slice }) => {
 
   return (
     <section>
-      <figure className="aspect-video grid max-h-[550px] grid-cols-1 gap-4 overflow-hidden border-2 border-solid border-red-500">
+      <figure className="aspect-video grid max-h-[550px] grid-cols-1 gap-4 overflow-hidden">
         {prismicH.isFilled.image(image) && (
           <div className="bg-gray-100">
             <PrismicNextImage field={image} sizes="100vw" className="w-full" />

@@ -1,99 +1,10 @@
-import * as prismicH from "@prismicio/helpers";
-import { PrismicLink, PrismicText } from "@prismicio/react";
-import { PrismicNextImage } from "@prismicio/next";
-
-import { Bounded } from "./Bounded";
-import { Heading } from "./Heading";
-import { HorizontalDivider } from "./HorizontalDivider";
-
-// const Profile = ({ name, description, profilePicture }) => {
-//   return (
-//     <div className="px-4">
-//       <div className="grid max-w-xl grid-cols-1 justify-items-center gap-8">
-//         <PrismicLink href="/" tabIndex="-1">
-//           <div className="relative h-40 w-40 overflow-hidden rounded-full bg-slate-300">
-//             {prismicH.isFilled.image(profilePicture) && (
-//               <PrismicNextImage
-//                 field={profilePicture}
-//                 fill={true}
-//                 className="object-cover"
-//               />
-//             )}
-//           </div>
-//         </PrismicLink>
-//         {(prismicH.isFilled.richText(name) ||
-//           prismicH.isFilled.richText(description)) && (
-//           <div className="grid grid-cols-1 gap-2 text-center">
-//             {prismicH.isFilled.richText(name) && (
-//               <Heading>
-//                 <PrismicLink href="/">
-//                   <PrismicText field={name} />
-//                 </PrismicLink>
-//               </Heading>
-//             )}
-//             {prismicH.isFilled.richText(description) && (
-//               <p className="font-serif text-2xl italic leading-normal tracking-tight text-slate-500">
-//                 <PrismicText field={description} />
-//               </p>
-//             )}
-//           </div>
-//         )}
-//       </div>
-//     </div>
-//   );
-// };
-
-// const NavItem = ({ children }) => {
-//   return (
-//     <li className="font-semibold tracking-tight text-slate-800">{children}</li>
-//   );
-// };
-
-// export const Header = ({
-//   withDivider = true,
-//   withProfile = true,
-//   navigation,
-//   settings,
-// }) => {
-//   return (
-//     <Bounded as="header" size="full">
-//       <div className="grid grid-cols-1 justify-items-center gap-20">
-//         <nav>
-//           <ul className="flex flex-wrap justify-center gap-10">
-//             <NavItem>
-//               <PrismicLink href="/">
-//                 <PrismicText field={navigation.data.homepageLabel} />
-//               </PrismicLink>
-//             </NavItem>
-//             {navigation.data?.links.map((item) => (
-//               <NavItem key={prismicH.asText(item.label)}>
-//                 <PrismicLink field={item.link}>
-//                   <PrismicText field={item.label} />
-//                 </PrismicLink>
-//               </NavItem>
-//             ))}
-//           </ul>
-//         </nav>
-//         {withProfile && (
-//           <Profile
-//             name={settings.data.name}
-//             description={settings.data.description}
-//             profilePicture={settings.data.profilePicture}
-//           />
-//         )}
-//         {withDivider && <HorizontalDivider />}
-//       </div>
-//     </Bounded>
-//   );
-// };
-
 
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Bounded } from "./Bounded";
 import Image from "next/image";
-import Link from "next/link";
 
 const user = {
   name: "Tom Cook",
@@ -101,7 +12,7 @@ const user = {
   imageUrl:
     "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
 };
-const navigationItems = [
+const navigation = [
   { name: "Dashboard", href: "#", current: true },
   { name: "Team", href: "#", current: false },
   { name: "Projects", href: "#", current: false },
@@ -117,22 +28,26 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export const Header = ({  
+export const NewHeader = ({  
     withDivider = true,
     withProfile = true,
     navigation,
-    settings,
+    settings, 
 }) => {
   return (
-    <Disclosure as="header" className="bg-white shadow">
-      {({ open }) => (
-        <>
-          <div className="mx-auto max-w-7xl px-2 sm:px-4 lg:divide-y lg:divide-gray-200 lg:px-8">
+    <Bounded as="header" size="full">
+        <Disclosure as="header" className="bg-white shadow">
+        {({ open }) => (
+            <>
+            <div className="px-2 sm:px-4 lg:divide-y lg:divide-gray-200 lg:px-8">
                 <div className="relative flex h-16 justify-between">
                 <div className="relative z-10 flex px-2 lg:px-0">
                     <div className="flex flex-shrink-0 items-center">
-                      <Link href={"/"}><h1 className="font-extrabold text-xl sm:text-xl md:text-3xl">TO THE MOUN</h1></Link>
-                    
+                    <Image
+                        className="block h-8 w-auto"
+                        src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                        alt="Your Company"
+                    />
                     </div>
                 </div>
                 <div className="relative z-0 flex flex-1 items-center justify-center px-2 sm:absolute sm:inset-0">
@@ -187,13 +102,6 @@ export const Header = ({
                             src={user.imageUrl}
                             alt=""
                         />
-                        {/* {prismicH.isFilled.image(profilePicture) && (
-              <PrismicNextImage
-                field={profilePicture}
-                fill={true}
-                className="h-8 w-8 rounded-full"
-              />
-            )} */}
                         </Menu.Button>
                     </div>
                     <Transition
@@ -227,11 +135,13 @@ export const Header = ({
                 </div>
                 </div>
                 <nav
-                className="hidden lg:flex lg:justify-center lg:space-x-8 lg:py-2"
+                className="hidden lg:flex lg:space-x-8 lg:py-2"
                 aria-label="Global"
                 >
-                {navigation.data?.links.map((item) => (
-                    <PrismicLink field={item.link} key={item.name}
+                {navigation.map((item) => (
+                    <a
+                    key={item.name}
+                    href={item.href}
                     className={classNames(
                         item.current
                         ? "bg-gray-100 text-gray-900"
@@ -240,15 +150,15 @@ export const Header = ({
                     )}
                     aria-current={item.current ? "page" : undefined}
                     >
-                    <PrismicText field={item.label} />
-                    </PrismicLink>
+                    {item.name}
+                    </a>
                 ))}
                 </nav>
             </div>
 
             <Disclosure.Panel as="nav" className="lg:hidden" aria-label="Global">
                 <div className="space-y-1 px-2 pt-2 pb-3">
-                {navigation.data?.links.map((item) => (
+                {navigation.map((item) => (
                     <Disclosure.Button
                     key={item.name}
                     as="a"
@@ -272,8 +182,6 @@ export const Header = ({
                         className="h-10 w-10 rounded-full"
                         src={user.imageUrl}
                         alt=""
-                        width={40}
-                        height={40}
                     />
                     </div>
                     <div className="ml-3">
@@ -309,5 +217,6 @@ export const Header = ({
             </>
         )}
         </Disclosure>
+    </Bounded>
   );
 }

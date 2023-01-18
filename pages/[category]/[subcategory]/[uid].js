@@ -7,7 +7,7 @@ import { components } from "../../../slices";
 import { Layout } from "../../../components/Layout";
 import { Bounded } from "../../../components/Bounded";
 
-const Plages = ({ page, navigation, settings }) => {
+const Plages = ({ extras, page, navigation, settings }) => {
   return (
     <Layout
       navigation={navigation}
@@ -22,7 +22,11 @@ const Plages = ({ page, navigation, settings }) => {
         </title>
       </Head> */}
       <Bounded size="base">
-        <SliceZone slices={page.data.slices} components={components} />
+        <SliceZone
+          slices={page.data.slices}
+          components={components}
+          context={extras}
+        />
       </Bounded>
     </Layout>
   );
@@ -39,12 +43,14 @@ export async function getStaticProps({ params, previewData }) {
   const navigation = await client.getSingle("navigation");
   const settings = await client.getSingle("settings");
 
-  // const auteur = await client.getByUID("auteur", page.data.auteur.uid);
+  const date_publication = { datePublished: page.data.date_publication };
+
+  const extras = date_publication;
 
   return {
     props: {
-      // auteur,
       page,
+      extras,
       navigation,
       settings,
     },

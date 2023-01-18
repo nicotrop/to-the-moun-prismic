@@ -23,8 +23,6 @@ const Page = ({ page, navigation, settings }) => {
 export default Page;
 
 export async function getStaticProps({ params, previewData }) {
-  console.log("params", params);
-
   const client = createClient({ previewData });
 
   const page = await client.getByUID("page", params.uid);
