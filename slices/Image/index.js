@@ -10,7 +10,12 @@ const Image = ({ slice }) => {
       <figure className="aspect-video grid max-h-[550px] grid-cols-1 gap-4 overflow-hidden">
         {prismicH.isFilled.image(image) && (
           <div className="bg-gray-100">
-            <PrismicNextImage field={image} sizes="100vw" className="w-full" />
+            <PrismicNextImage
+              field={image}
+              alt=""
+              sizes="100vw"
+              className="w-full"
+            />
           </div>
         )}
         {prismicH.isFilled.richText(slice.primary.caption) && (

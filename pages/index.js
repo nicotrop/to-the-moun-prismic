@@ -54,6 +54,7 @@ const Article = ({ article }) => {
           {prismicH.isFilled.image(featuredImage) && (
             <PrismicNextImage
               field={featuredImage}
+              alt=""
               fill={true}
               className="object-cover"
             />
@@ -90,11 +91,12 @@ const Index = ({ articles, navigation, settings }) => {
         <title>{prismicH.asText(settings.data.name)}</title>
       </Head>
       <Bounded size="widest">
-        <ul className="grid grid-cols-1 gap-16">
+        {/* <ul className="grid grid-cols-1 gap-16">
           {articles.map((article) => (
             <Article key={article.id} article={article} />
           ))}
-        </ul>
+        </ul> */}
+        Home page
       </Bounded>
     </Layout>
   );

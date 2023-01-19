@@ -139,6 +139,17 @@ interface CategoryDocumentData {
      */
     header: prismicT.RichTextField;
     /**
+     * plages field in *Category*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: category.plages[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/group
+     *
+     */
+    plages: prismicT.GroupField<Simplify<CategoryDocumentDataPlagesItem>>;
+    /**
      * Slice Zone field in *Category*
      *
      * - **Field Type**: Slice Zone
@@ -149,6 +160,22 @@ interface CategoryDocumentData {
      *
      */
     slices: prismicT.SliceZone<CategoryDocumentDataSlicesSlice>;
+}
+/**
+ * Item in Category → plages
+ *
+ */
+export interface CategoryDocumentDataPlagesItem {
+    /**
+     * Link field in *Category → plages*
+     *
+     * - **Field Type**: Content Relationship
+     * - **Placeholder**: *None*
+     * - **API ID Path**: category.plages[].link
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    link: prismicT.RelationField;
 }
 /**
  * Slice for *Category → Slice Zone*
@@ -380,6 +407,17 @@ interface PlageGuadeloupeDocumentData {
      *
      */
     geopoint: prismicT.GeoPointField;
+    /**
+     * Featured image field in *Plage*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: plage_guadeloupe.featured_image
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    featured_image: prismicT.ImageField<never>;
     /**
      * Slice Zone field in *Plage*
      *
@@ -953,6 +991,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { ArticleDocumentData, ArticleDocumentDataSlicesSlice, ArticleDocument, AuteurDocumentData, AuteurDocument, CategoryDocumentData, CategoryDocumentDataSlicesSlice, CategoryDocument, CollectionsDocumentData, CollectionsDocument, NavigationDocumentData, NavigationDocumentDataLinksItem, NavigationDocument, PageDocumentData, PageDocumentDataSlicesSlice, PageDocument, PlageGuadeloupeDocumentData, PlageGuadeloupeDocumentDataSlicesSlice, PlageGuadeloupeDocument, SettingsDocumentData, SettingsDocument, SubcategoryDocumentData, SubcategoryDocument, VilleDocumentData, VilleDocument, AllDocumentTypes, ArticleMetaDataSliceDefaultPrimary, ArticleMetaDataSliceDefault, ArticleMetaDataSliceVariation, ArticleMetaDataSlice, BreadcrumbsSliceDefaultItem, BreadcrumbsSliceDefault, BreadcrumbsSliceVariation, BreadcrumbsSlice, ContactFormSliceDefault, ContactFormSliceVariation, ContactFormSlice, HeaderSliceDefaultPrimary, HeaderSliceDefault, HeaderSliceVariation, HeaderSlice, ImageSliceDefaultPrimary, ImageSliceDefault, ImageSliceWidePrimary, ImageSliceWide, ImageSliceVariation, ImageSlice, QuoteSliceDefaultPrimary, QuoteSliceDefault, QuoteSliceVariation, QuoteSlice, BodySliceDefaultPrimary, BodySliceDefault, BodySliceVariation, BodySlice, TextSliceDefaultPrimary, TextSliceDefault, TextSliceVariation, TextSlice };
+        export type { ArticleDocumentData, ArticleDocumentDataSlicesSlice, ArticleDocument, AuteurDocumentData, AuteurDocument, CategoryDocumentData, CategoryDocumentDataPlagesItem, CategoryDocumentDataSlicesSlice, CategoryDocument, CollectionsDocumentData, CollectionsDocument, NavigationDocumentData, NavigationDocumentDataLinksItem, NavigationDocument, PageDocumentData, PageDocumentDataSlicesSlice, PageDocument, PlageGuadeloupeDocumentData, PlageGuadeloupeDocumentDataSlicesSlice, PlageGuadeloupeDocument, SettingsDocumentData, SettingsDocument, SubcategoryDocumentData, SubcategoryDocument, VilleDocumentData, VilleDocument, AllDocumentTypes, ArticleMetaDataSliceDefaultPrimary, ArticleMetaDataSliceDefault, ArticleMetaDataSliceVariation, ArticleMetaDataSlice, BreadcrumbsSliceDefaultItem, BreadcrumbsSliceDefault, BreadcrumbsSliceVariation, BreadcrumbsSlice, ContactFormSliceDefault, ContactFormSliceVariation, ContactFormSlice, HeaderSliceDefaultPrimary, HeaderSliceDefault, HeaderSliceVariation, HeaderSlice, ImageSliceDefaultPrimary, ImageSliceDefault, ImageSliceWidePrimary, ImageSliceWide, ImageSliceVariation, ImageSlice, QuoteSliceDefaultPrimary, QuoteSliceDefault, QuoteSliceVariation, QuoteSlice, BodySliceDefaultPrimary, BodySliceDefault, BodySliceVariation, BodySlice, TextSliceDefaultPrimary, TextSliceDefault, TextSliceVariation, TextSlice };
     }
 }

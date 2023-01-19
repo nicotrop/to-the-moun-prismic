@@ -23,6 +23,10 @@ const routes = [
     path: "/:uid",
   },
   {
+    type: "page",
+    path: "/about",
+  },
+  {
     type: "plage_guadeloupe",
     resolvers: {
       subcategory: "subcategory",

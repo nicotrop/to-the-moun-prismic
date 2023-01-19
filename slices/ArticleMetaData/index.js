@@ -6,7 +6,7 @@ import React from "react";
  * @typedef {import("@prismicio/react").SliceComponentProps<ArticleMetaDataSlice>} ArticleMetaDataProps
  * @param { ArticleMetaDataProps }
  */
-const ArticleMetaData = ({ slice }) => {
+const ArticleMetaData = ({ slice, context }) => {
   const { data: auteur } = slice.primary.auteur;
 
   return (
@@ -14,6 +14,7 @@ const ArticleMetaData = ({ slice }) => {
       <div className="flex items-center gap-x-2 ">
         <PrismicNextImage
           field={auteur.avatar}
+          alt=""
           className="aspect-1 w-10 overflow-hidden rounded-full border border-solid border-black"
         />
         <span>

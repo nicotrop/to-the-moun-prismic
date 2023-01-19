@@ -74,6 +74,14 @@
           "label": "Geopoint"
         }
       },
+      "featured_image": {
+        "type": "Image",
+        "config": {
+          "label": "Featured image",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",

@@ -1,7 +1,7 @@
 {
   "uid": {
     "__TYPE__": "UIDContent",
-    "value": "leader"
+    "value": "highest"
   },
   "subcategory": {
     "__TYPE__": "LinkContent",
@@ -16,8 +16,28 @@
       {
         "type": "paragraph",
         "content": {
-          "text": "Eiusmod do eiusmod nulla ullamco consectetur dolore commodo irure sunt irure aliquip."
+          "text": "Sint sunt est eiusmod tempor. Fugiat Lorem mollit exercitation quis sunt ullamco Lorem."
         }
+      }
+    ]
+  },
+  "plages": {
+    "__TYPE__": "GroupContentType",
+    "value": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "link",
+            {
+              "__TYPE__": "LinkContent",
+              "value": {
+                "__TYPE__": "DocumentLink",
+                "id": "mock_document_id"
+              }
+            }
+          ]
+        ]
       }
     ]
   },
@@ -25,7 +45,7 @@
     "__TYPE__": "SliceContentType",
     "value": [
       {
-        "key": "text$1088c840-b393-439a-ae5f-bcfdb398c97e",
+        "key": "text$4e500941-416c-4070-84b0-e93a9c205c64",
         "name": "text",
         "widget": {
           "__TYPE__": "SharedSliceContent",
@@ -37,7 +57,7 @@
                 {
                   "type": "paragraph",
                   "content": {
-                    "text": "Sunt consectetur quis anim pariatur sint adipisicing exercitation occaecat reprehenderit magna ex nostrud. Deserunt aute irure proident aliquip irure qui dolor labore aute cillum dolor tempor deserunt."
+                    "text": "Nisi excepteur ut dolore minim culpa aliqua veniam ad elit sint deserunt mollit et aliquip. Minim cillum non proident elit proident nulla reprehenderit incididunt aute quis quis mollit ullamco."
                   }
                 }
               ]
